@@ -1,0 +1,38 @@
+// The dropdown wrapper (`<div>`)
+nav {
+  z-index: 99999;
+
+  a {
+    text-decoration: none;
+  }
+
+  .img-h {
+    height: 3rem;
+  }
+
+  .nav-link {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: white !important;
+  }
+
+  .dropdown-menu {
+    min-width: 25rem !important;
+    border-radius: 0.75rem;
+
+    .icon {
+      font-size: 1.25rem !important;
+    }
+
+    .dropdown-heading {
+      color: #16192c;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .dropdown-helper {
+      color: #6b7b93;
+      margin: 0 !important;
+    }
+  }
+}
