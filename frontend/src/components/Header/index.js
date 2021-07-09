@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/userActions";
 import { useState } from "react";
+import { LinkContainer } from "react-router-bootstrap";
+import { NavDropdown, Nav } from "react-bootstrap";
 import "./style.scss";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
 
   window.onscroll = () => {
@@ -11,13 +16,20 @@ const Header = () => {
     return () => (window.onscroll = null);
   };
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent  px-0 py-3">
         <div className="container-xl px-1">
-          <a className="navbar-brand mx-auto" href="#">
+          <LinkContainer className="navbar-brand mx-auto" to="/">
             <img src="Product.png" className="img-h" alt="..." />
-          </a>
+          </LinkContainer>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -211,17 +223,33 @@ const Header = () => {
               </li>
             </ul>
             {/* Right navigation */}
-            <div className="navbar-nav ms-lg-4">
-              <a className="nav-link" href="#">
-                Sign in
-              </a>
-            </div>
+
             {/* Action */}
             <div className="d-flex align-items-lg-center mt-3 mt-lg-0">
-              <a href="#" className="btn btn-sm btn-primary w-full w-lg-auto">
+              <Link
+                to="/register"
+                className="btn btn-sm btn-primary w-full w-lg-auto"
+              >
                 Register
-              </a>
+              </Link>
             </div>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="username">
+                <LinkContainer to="/profile">
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <LinkContainer to="/login">
+                <Nav.Link>
+                  <i className="fas fa-user px-1" />
+                  Sign in
+                </Nav.Link>
+              </LinkContainer>
+            )}
           </div>
         </div>
       </nav>

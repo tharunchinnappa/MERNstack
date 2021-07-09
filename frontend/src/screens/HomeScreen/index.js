@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Background from "../../components/Background";
-import Footer from "../../components/Footer";
 import "./style.scss";
 
 const HomeScreen = () => {
