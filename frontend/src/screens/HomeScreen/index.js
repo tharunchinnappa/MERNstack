@@ -5,7 +5,7 @@ import "./style.scss";
 
 const HomeScreen = () => {
   return (
-    <div>
+    <div className="test">
       <Background />
       <div class="hero">
         <div class="center-content">

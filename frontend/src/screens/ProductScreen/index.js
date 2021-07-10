@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
+  Container,
   Row,
   Col,
   Image,
@@ -64,7 +65,7 @@ const ProductScreen = ({ history, match }) => {
     dispatch(createProductReview(match.params.id, { rating, comment }));
   };
   return (
-    <>
+    <Container>
       <Link className="btn btn-light my-3" to="/">
         Go back
       </Link>
@@ -209,7 +210,7 @@ const ProductScreen = ({ history, match }) => {
           </Row>
         </>
       )}
-    </>
+    </Container>
   );
 };
 

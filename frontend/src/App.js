@@ -46,7 +46,7 @@ const App = ({ history }) => {
         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
         <Route path="/admin/orderlist" component={OrderListScreen} />
         <Route path="/search/:keyword" component={HomeScreen} />
-        <Route exact path="/shop" component={Shop} />
+        <Route exact path="/books" component={Shop} />
         <Route exact path="/about" component={About} />
         <Route exact path="/" component={HomeScreen} />
       </main>
