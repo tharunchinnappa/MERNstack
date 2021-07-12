@@ -1,5 +1,5 @@
 import React from "react";
-import "./Styles.css";
+import "./Styles.scss";
 
 const Rating = ({ val, text }) => {
   return (
@@ -59,7 +59,9 @@ const Rating = ({ val, text }) => {
           }
         />
       </span>
-      <span className="text">{text && text}</span>
+      <div>
+        <span className="text">{text && text}</span>
+      </div>
     </div>
   );
 };

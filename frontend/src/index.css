@@ -13,6 +13,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 15px;
   background: rgb(7, 11, 52);
   background: -moz-linear-gradient(
     180deg,
