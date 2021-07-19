@@ -24,7 +24,7 @@ const Header = () => {
   };
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-transparent  px-0 py-3">
+      <nav className="navbar navbar-expand-lg navbar-dark  px-0 py-3">
         <div className="container-xl px-1">
           <LinkContainer className="navbar-brand" to="/">
             <img src="/Product.png" className="img-h" alt="..." />
@@ -72,18 +72,23 @@ const Header = () => {
               </li>
             </ul>
             {/* Right navigation */}
-
             {/* Action */}
-            <div className="d-flex align-items-lg-center mt-3 mt-lg-0">
-              <Link
-                to="/register"
-                className="btn btn-sm btn-primary w-full w-lg-auto"
-              >
-                Register
-              </Link>
-            </div>
+            {!userInfo && (
+              <div className="d-flex align-items-lg-center mt-3 mt-lg-0">
+                <Link
+                  to="/register"
+                  className="btn btn-sm btn-primary w-full w-lg-auto"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
             {userInfo ? (
-              <NavDropdown title={userInfo.name} id="username">
+              <NavDropdown
+                className="text-capitalize"
+                title={userInfo.name}
+                id="username"
+              >
                 <LinkContainer to="/profile">
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>
@@ -98,21 +103,21 @@ const Header = () => {
                   Sign in
                 </Nav.Link>
               </LinkContainer>
-            )}
+            )}{" "}
+            {userInfo && userInfo.isAdmin ? (
+              <NavDropdown title="Admin links" id="adminmenu">
+                <LinkContainer to="/admin/userlist">
+                  <NavDropdown.Item>Users</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/admin/productlist">
+                  <NavDropdown.Item>Products</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/admin/orderlist">
+                  <NavDropdown.Item>Orders</NavDropdown.Item>
+                </LinkContainer>
+              </NavDropdown>
+            ) : null}
           </div>
-          {userInfo && userInfo.isAdmin ? (
-            <NavDropdown title="Admin links" id="adminmenu">
-              <LinkContainer to="/admin/userlist">
-                <NavDropdown.Item>Users</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/admin/productlist">
-                <NavDropdown.Item>Products</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/admin/orderlist">
-                <NavDropdown.Item>Orders</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          ) : null}
         </div>
       </nav>
     </header>

@@ -58,7 +58,9 @@ const About = () => {
             </p>
           </div>
           <div className="product__photo">
-            <div className="photo-container"></div>
+            <div className="photo-container">
+              <img src="/images/about_me.jpg" alt="pooviah" />
+            </div>
           </div>
         </section>
       </Container>

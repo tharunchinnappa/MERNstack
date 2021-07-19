@@ -1,6 +1,7 @@
 // The dropdown wrapper (`<div>`)
 nav {
   z-index: 99999;
+  background-color: #5b5a7b !important;
 
   a {
     text-decoration: none;
@@ -17,7 +18,7 @@ nav {
   }
 
   .dropdown-menu {
-    min-width: 25rem !important;
+    min-width: 5rem !important;
     border-radius: 0.75rem;
 
     .icon {
@@ -33,6 +34,16 @@ nav {
     .dropdown-helper {
       color: #6b7b93;
       margin: 0 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    background-color: #5b5a7b !important;
+
+    ul {
+      text-align: center;
     }
   }
 }
