@@ -26,7 +26,7 @@ const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-transparent  px-0 py-3">
         <div className="container-xl px-1">
-          <LinkContainer className="navbar-brand mx-auto" to="/">
+          <LinkContainer className="navbar-brand" to="/">
             <img src="/Product.png" className="img-h" alt="..." />
           </LinkContainer>
 
@@ -59,8 +59,15 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
+                <del>
+                  <Link className="nav-link px-4" to="/blogs">
+                    Blogs
+                  </Link>
+                </del>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link px-4" to="/blogs">
-                  Blogs
+                  Contacts
                 </Link>
               </li>
             </ul>
@@ -93,6 +100,19 @@ const Header = () => {
               </LinkContainer>
             )}
           </div>
+          {userInfo && userInfo.isAdmin ? (
+            <NavDropdown title="Admin links" id="adminmenu">
+              <LinkContainer to="/admin/userlist">
+                <NavDropdown.Item>Users</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/admin/productlist">
+                <NavDropdown.Item>Products</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/admin/orderlist">
+                <NavDropdown.Item>Orders</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          ) : null}
         </div>
       </nav>
     </header>

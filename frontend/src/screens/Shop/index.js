@@ -26,7 +26,7 @@ const Shop = ({ match }) => {
         <Container>
           <Row>
             {products.map((product) => (
-              <Col sm={12} md={6} key={product._id}>
+              <Col md={12} key={product._id}>
                 <Product product={product} />
               </Col>
             ))}

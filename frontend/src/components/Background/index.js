@@ -123,7 +123,7 @@ const Background = () => {
       this.x = Math.random() * width;
       this.y = 0;
       this.len = Math.random() * 80 + 10;
-      this.speed = Math.random() * 10 + 6;
+      this.speed = Math.random() * 5 + 6;
       this.size = Math.random() * 1 + 0.1;
       // this is used so the shooting stars aren't constant
       this.waitTime = new Date().getTime() + Math.random() * 3000 + 500;
@@ -214,7 +214,7 @@ const Background = () => {
     return () => {
       cancelAnimationFrame(requestId);
     };
-  });
+  }, []);
 
   return (
     <div id="canvas">
