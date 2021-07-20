@@ -10,9 +10,9 @@ $gray: #8d8d8d;
 
 .card-container {
   position: relative;
+  width: 60vw;
   transition: all 0.7s linear;
-  margin-top: 10px;
-  margin-bottom: 70px;
+  margin: 20px auto;
 
   .row {
     justify-content: space-around;
@@ -125,8 +125,7 @@ $gray: #8d8d8d;
 
 @media (max-width: 992px) {
   .card-container {
-    width: 400px;
-    height: 600px;
+    width: 85vw;
   }
 
   .side-front .product-image img {

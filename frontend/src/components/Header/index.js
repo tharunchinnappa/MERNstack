@@ -1,10 +1,10 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/userActions";
 import { useState } from "react";
+import { NavDropdown, Navbar, Nav, NavLink } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { NavDropdown, Nav } from "react-bootstrap";
 import "./style.scss";
 
 const Header = () => {
@@ -24,55 +24,32 @@ const Header = () => {
   };
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-dark  px-0 py-3">
-        <div className="container-xl px-1">
-          <LinkContainer className="navbar-brand" to="/">
-            <img src="/Product.png" className="img-h" alt="..." />
-          </LinkContainer>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <ul className="navbar-nav mx-lg-auto">
-              <li className="nav-item">
-                <Link className="nav-link px-4" to="/">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-4" to="/books">
-                  Books
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link px-4" href="/showcase">
-                  Showcase
-                </a>
-              </li>
-              <li className="nav-item">
-                <del>
-                  <Link className="nav-link px-4" to="/blogs">
-                    Blogs
-                  </Link>
-                </del>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link px-4" to="/blogs">
-                  Contacts
-                </Link>
-              </li>
-            </ul>
-            {/* Right navigation */}
-            {/* Action */}
+      <Navbar collapseOnSelect expand="lg" variant="dark" className="px-5">
+        <LinkContainer className="navbar-brand" to="/">
+          <img src="/Product.png" className="img-h" alt="Pooviah" />
+        </LinkContainer>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ml-auto">
+            <LinkContainer exact to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/books">
+              <Nav.Link>Books</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/showcase">
+              <Nav.Link>Showcase</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/blogs">
+              <del>
+                <Nav.Link>Blogs</Nav.Link>
+              </del>
+            </LinkContainer>
+            <LinkContainer to="/contacts">
+              <Nav.Link>Contacts</Nav.Link>
+            </LinkContainer>
+          </Nav>
+          <Nav className="ml-auto">
             {!userInfo && (
               <div className="d-flex align-items-lg-center mt-3 mt-lg-0">
                 <Link
@@ -117,9 +94,9 @@ const Header = () => {
                 </LinkContainer>
               </NavDropdown>
             ) : null}
-          </div>
-        </div>
-      </nav>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     </header>
   );
 };

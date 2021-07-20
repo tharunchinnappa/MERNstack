@@ -6,7 +6,15 @@ const About = () => {
   return (
     <div>
       <Container>
+        <h1 class=" display-1 text-center text-white " id="heading-about">
+          About Me
+        </h1>
         <section className="product mt-5 pt-">
+          <div className="product__photo">
+            <div className="photo-container">
+              <img src="/images/about_me.jpg" alt="pooviah" />
+            </div>
+          </div>
           <div className="product__info 5">
             <p>
               <strong>I </strong>am an Author and Entrepreneur working in the
@@ -56,11 +64,6 @@ const About = () => {
               images from the region and all are also available for sale in
               different canvas sizes.
             </p>
-          </div>
-          <div className="product__photo">
-            <div className="photo-container">
-              <img src="/images/about_me.jpg" alt="pooviah" />
-            </div>
           </div>
         </section>
       </Container>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "./../../redux/actions/productActions";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Loader from "./../../components/Loader";
 import Toast from "./../../components/Toast";
 import Product from "./../../components/Product";
@@ -12,6 +12,7 @@ const Shop = ({ match }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
+
   useEffect(() => {
     dispatch(listProducts(keyword));
   }, [dispatch, keyword]);
@@ -23,15 +24,13 @@ const Shop = ({ match }) => {
       ) : error ? (
         <Toast text={error} type="error" />
       ) : (
-        <Container>
-          <Row>
-            {products.map((product) => (
-              <Col md={12} key={product._id}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
+        <Row>
+          {products.map((product) => (
+            <Col key={product._id}>
+              <Product product={product} />
+            </Col>
+          ))}
+        </Row>
       )}
     </>
   );
