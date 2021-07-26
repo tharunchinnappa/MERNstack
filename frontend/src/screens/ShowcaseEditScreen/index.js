@@ -3,16 +3,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "./../../components/Message";
-import Loader from "./../../components/Loader";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import {
   listProductDetails,
   updateProduct,
-} from "./../../redux/actions/productActions";
-import FormContainer from "./../../components/FormContainer";
+} from "../../redux/actions/productActions";
+import FormContainer from "../../components/FormContainer";
 import { PRODUCT_UPDATE_RESET } from "../../redux/constants/productConstants";
 
-const ProductEditScreen = ({ match, history }) => {
+const ShowcaseEditScreen = ({ match, history }) => {
   const productId = match.params.id;
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -25,6 +25,9 @@ const ProductEditScreen = ({ match, history }) => {
 
   const dispatch = useDispatch();
 
+  // const ShowcaseItemsList = useSelector((state) => state.ShowcaseItemsList);
+  // const { loading, error, showcase } = ShowcaseItemsList;
+
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
@@ -34,7 +37,6 @@ const ProductEditScreen = ({ match, history }) => {
     error: errorUpdate,
     success: successUpdate,
   } = productUpdate;
-
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -55,9 +57,6 @@ const ProductEditScreen = ({ match, history }) => {
   }, [dispatch, history, product, productId, successUpdate]);
 
   const uploadFileHandler = async (e) => {
-    const { test } = await axios.post("/api/showcase");
-    console.log(test);
-
     const file = e.target.files;
     var formData = new FormData();
     for (const key of Object.keys(file)) {
@@ -75,7 +74,6 @@ const ProductEditScreen = ({ match, history }) => {
 
       const { data } = await axios.post("/api/uploads", formData, config);
       setImage(data);
-
       console.log(data);
       setUploading(false);
     } catch (error) {
@@ -206,4 +204,4 @@ const ProductEditScreen = ({ match, history }) => {
   );
 };
 
-export default ProductEditScreen;
+export default ShowcaseEditScreen;

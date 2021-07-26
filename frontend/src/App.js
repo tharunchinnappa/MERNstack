@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // import component
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ProductGallery from "./components/ProductGallery";
 
 // import Screens
 import HomeScreen from "./screens/HomeScreen";
@@ -25,6 +26,8 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import Shop from "./screens/Shop";
+import ShowcaseListScreen from "./screens/ShowcaseListScreen";
+import ShowcaseEditScreen from "./screens/ShowcaseEditScreen";
 
 const App = ({ history }) => {
   return (
@@ -45,12 +48,18 @@ const App = ({ history }) => {
           <Route path="/admin/userlist" component={UserListScreen} />
           <Route path="/admin/user/:id/edit" component={UserEditScreen} />
           <Route path="/admin/productlist" component={ProductListScreen} />
+          <Route path="/admin/showcaseitem" component={ShowcaseListScreen} />
+          <Route
+            path="/admin/showcase/:id/edit"
+            component={ShowcaseEditScreen}
+          />
           <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />
           <Route path="/search/:keyword" component={HomeScreen} />
           <Route exact path="/showcase" component={Showcase} />
           <Route exact path="/books" component={Shop} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/test" component={ProductGallery} />
           <Route exact path="/" component={HomeScreen} />
         </Container>
       </main>

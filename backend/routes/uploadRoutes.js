@@ -35,8 +35,12 @@ const upload = multer({
   },
 });
 
-router.post("/", upload.single("image"), (req, res) => {
-  res.send(`/${req.file.path}`);
+router.post("/", upload.array("image", 4), (req, res, next) => {
+  const files = req.files;
+  if (!files) {
+    new Error("Please select a Image");
+  }
+  res.send(req.files);
 });
 
 export default router;

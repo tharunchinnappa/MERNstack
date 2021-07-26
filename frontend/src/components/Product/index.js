@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Rating from "./../Rating";
-import { Container, Card } from "react-bootstrap";
+import ProductGallery from "../../components/ProductGallery";
+import { Card } from "react-bootstrap";
 import "./style.scss";
 
 const Product = ({ product }) => {
@@ -11,9 +12,7 @@ const Product = ({ product }) => {
         <div className="card-show side-front">
           <div className="row">
             <div className="product-image col-12 col-lg-4">
-              <Link to={`/product/${product._id}`}>
-                <Card.Img src={product.image} variant="top" />
-              </Link>
+              <ProductGallery images={product.image} />
             </div>
             <div className="content col-12 col-lg-7">
               <Link to={`/product/${product._id}`}>

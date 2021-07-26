@@ -30,6 +30,10 @@ import {
   orderMyListReducer,
   orderPayReducer,
 } from "./reducers/orderReducer";
+import {
+  ShowcaseItemsListReducer,
+  ShowcaseItemCreateReducer,
+} from "./reducers/showcaseReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -53,6 +57,8 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   productReviewCreate: productReviewCreateReducer,
   productTopRated: productTopRatedReducer,
+  ShowcaseItemsList: ShowcaseItemsListReducer,
+  ShowcaseItemCreate: ShowcaseItemCreateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
