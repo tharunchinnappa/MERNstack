@@ -99,8 +99,6 @@ const ProductEditScreen = ({ match, history }) => {
     );
   };
 
-  const test = { ...image };
-
   return (
     <>
       <Link to="/admin/productlist" className="btn btn-dark my-3">
@@ -143,13 +141,21 @@ const ProductEditScreen = ({ match, history }) => {
               <Form.Control
                 type="text"
                 placeholder="Enter image url"
-                value={image}
+                value={
+                  image && image.map((img, index) => ` ${img.originalname}`)
+                }
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
 
-              {/* {Object.keys(image).map((item) => (
-                <img src={item.path} alt={item.name} />
-              ))} */}
+              {image &&
+                image.map((img, index) => (
+                  <img
+                    key={index}
+                    className="col-4"
+                    src={`http://${window.location.host}/${img.path}`}
+                    alt={img.originalname}
+                  />
+                ))}
 
               <Form.File
                 id="image-file"

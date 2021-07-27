@@ -28,6 +28,7 @@ import OrderListScreen from "./screens/OrderListScreen";
 import Shop from "./screens/Shop";
 import ShowcaseListScreen from "./screens/ShowcaseListScreen";
 import ShowcaseEditScreen from "./screens/ShowcaseEditScreen";
+import Contact from "./screens/Contact";
 
 const App = ({ history }) => {
   return (
@@ -56,6 +57,7 @@ const App = ({ history }) => {
           />
           <Route path="/admin/orderlist" component={OrderListScreen} />
           <Route path="/search/:keyword" component={HomeScreen} />
+          <Route exact path="/contacts" component={Contact} />
           <Route exact path="/showcase" component={Showcase} />
           <Route exact path="/books" component={Shop} />
           <Route exact path="/about" component={About} />

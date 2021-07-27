@@ -4,10 +4,6 @@ $gray: #8d8d8d;
 
 /* Card Container & Body */
 
-.wrapper {
-  // height: 40vh;
-}
-
 .card-container {
   position: relative;
   width: 60vw;
@@ -16,6 +12,10 @@ $gray: #8d8d8d;
 
   .row {
     justify-content: space-around;
+  }
+
+  a {
+    text-decoration: none;
   }
 }
 
@@ -49,13 +49,6 @@ $gray: #8d8d8d;
 /* Card-Sides */
 
 .card-show {
-  .product-image {
-    position: relative;
-    img {
-      height: 200px;
-    }
-  }
-
   .content {
     display: flex;
     flex-direction: column;
@@ -89,9 +82,9 @@ $gray: #8d8d8d;
   }
   .button {
     margin-top: auto;
-    border: 1px solid $orange;
+    border: 1px solid black;
     border-radius: 40px;
-    color: $orange;
+    color: black;
     cursor: pointer;
     display: block;
     padding: 10px;
@@ -108,7 +101,7 @@ $gray: #8d8d8d;
       left: -160%;
       width: 150%;
       height: 100%;
-      background: $orange;
+      background: black;
       content: " ";
       transition: all 0.4s ease-in;
       transform: skewX(60deg);
@@ -126,21 +119,5 @@ $gray: #8d8d8d;
 @media (max-width: 992px) {
   .card-container {
     width: 85vw;
-  }
-
-  .side-front .product-image img {
-    position: static;
-    height: 200px;
-  }
-
-  .side-front .product-image {
-    display: flex;
-    justify-content: center;
-  }
-
-  .side-front .content {
-    display: flex;
-    flex-direction: column;
-    height: auto;
   }
 }

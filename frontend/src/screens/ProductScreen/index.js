@@ -41,7 +41,6 @@ const ProductScreen = ({ history, match }) => {
     productReviewCreate;
 
   const dispatch = useDispatch();
-  console.log(product);
 
   useEffect(() => {
     if (successProductReview) {

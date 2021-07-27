@@ -1,63 +1,24 @@
-import React from "react";
-import { Card } from "react-bootstrap";
+import React, { useState } from "react";
 import "./style.scss";
 
 const ProductGallery = ({ images }) => {
-  console.log(images);
+  const [selectedImg, setSelectedImg] = useState(images[0].path);
   return (
-    <div className="preview col-md-6">
-      <div className="preview-pic tab-content">
-        {/* {images.map(function (image, index) {
-          return (
-            //   <Card.Img src={image.path} key={index} variant="top" />
-          
-          );
-        })} */}
-
-        <div className="tab-pane active" id="pic-1">
-          <img src="http://placekitten.com/400/252" />
-        </div>
-
-        <div className="tab-pane" id="pic-2">
-          <img src="http://placekitten.com/400/252" />
-        </div>
-        <div className="tab-pane" id="pic-3">
-          <img src="http://placekitten.com/400/252" />
-        </div>
-        <div className="tab-pane" id="pic-4">
-          <img src="http://placekitten.com/400/252" />
-        </div>
-        <div className="tab-pane" id="pic-5">
-          <img src="http://placekitten.com/400/252" />
+    <div className="App">
+      <div className="container">
+        <img src={selectedImg} alt="Selected" className="selected" />
+        <div className="imgContainer">
+          {images.map((img, index) => (
+            <img
+              style={{ border: selectedImg === img ? "4px solid purple" : "" }}
+              key={index}
+              src={img.path}
+              alt={img.originalname}
+              onClick={() => setSelectedImg(img.path)}
+            />
+          ))}
         </div>
       </div>
-      <ul className="preview-thumbnail nav nav-tabs">
-        <li className="active">
-          <a data-target="#pic-1" data-toggle="tab">
-            <img src={images[0].path} />
-          </a>
-        </li>
-        <li>
-          <a data-target="#pic-2" data-toggle="tab">
-            <img src="http://placekitten.com/200/126" />
-          </a>
-        </li>
-        <li>
-          <a data-target="#pic-3" data-toggle="tab">
-            <img src="http://placekitten.com/200/126" />
-          </a>
-        </li>
-        <li>
-          <a data-target="#pic-4" data-toggle="tab">
-            <img src="http://placekitten.com/200/126" />
-          </a>
-        </li>
-        <li>
-          <a data-target="#pic-5" data-toggle="tab">
-            <img src="http://placekitten.com/200/126" />
-          </a>
-        </li>
-      </ul>
     </div>
   );
 };
