@@ -55,9 +55,6 @@ const ProductEditScreen = ({ match, history }) => {
   }, [dispatch, history, product, productId, successUpdate]);
 
   const uploadFileHandler = async (e) => {
-    const { test } = await axios.post("/api/showcase");
-    console.log(test);
-
     const file = e.target.files;
     var formData = new FormData();
     for (const key of Object.keys(file)) {
@@ -73,10 +70,12 @@ const ProductEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("/api/uploads", formData, config);
+      const { data } = await axios.post(
+        "/api/uploads/productupload",
+        formData,
+        config,
+      );
       setImage(data);
-
-      console.log(data);
       setUploading(false);
     } catch (error) {
       console.error(error);
@@ -99,6 +98,8 @@ const ProductEditScreen = ({ match, history }) => {
       }),
     );
   };
+
+  const test = { ...image };
 
   return (
     <>
@@ -145,6 +146,11 @@ const ProductEditScreen = ({ match, history }) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+
+              {/* {Object.keys(image).map((item) => (
+                <img src={item.path} alt={item.name} />
+              ))} */}
+
               <Form.File
                 id="image-file"
                 label="Choose file"

@@ -31,8 +31,11 @@ import {
   orderPayReducer,
 } from "./reducers/orderReducer";
 import {
-  ShowcaseItemsListReducer,
-  ShowcaseItemCreateReducer,
+  showcaseItemsListReducer,
+  showcaseItemCreateReducer,
+  showcaseDetailsReducer,
+  showcaseItemDeleteReducer,
+  showcaseUpdateReducer,
 } from "./reducers/showcaseReducers";
 
 const reducer = combineReducers({
@@ -57,8 +60,11 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   productReviewCreate: productReviewCreateReducer,
   productTopRated: productTopRatedReducer,
-  ShowcaseItemsList: ShowcaseItemsListReducer,
-  ShowcaseItemCreate: ShowcaseItemCreateReducer,
+  showcaseItemsList: showcaseItemsListReducer,
+  showcaseItemCreate: showcaseItemCreateReducer,
+  showcaseDetails: showcaseDetailsReducer,
+  showcaseItemDelete: showcaseItemDeleteReducer,
+  showcaseUpdate: showcaseUpdateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

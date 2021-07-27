@@ -4,33 +4,33 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
-import { deleteProduct } from "../../redux/actions/productActions";
 import {
   listShowcaseItems,
   createShowcaseItems,
+  deleteShowcaseItem,
 } from "../../redux/actions/showcaseActions";
 import { SHOWCASE_CREATE_RESET } from "../../redux/constants/showcaseConstants";
 
 const ShowcaseListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
 
-  const ShowcaseItemsList = useSelector((state) => state.ShowcaseItemsList);
-  const { loading, error, showcase } = ShowcaseItemsList;
+  const showcaseItemsList = useSelector((state) => state.showcaseItemsList);
+  const { loading, error, showcase } = showcaseItemsList;
 
-  const productDelete = useSelector((state) => state.productDelete);
+  const showcaseItemDelete = useSelector((state) => state.showcaseItemDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = productDelete;
+  } = showcaseItemDelete;
 
-  const ShowcaseItemCreate = useSelector((state) => state.ShowcaseItemCreate);
+  const showcaseItemCreate = useSelector((state) => state.showcaseItemCreate);
   const {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    product: createdProduct,
-  } = ShowcaseItemCreate;
+    showcase: createdItem,
+  } = showcaseItemCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -42,18 +42,11 @@ const ShowcaseListScreen = ({ history, match }) => {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/showcase/${createdProduct._id}/edit`);
+      history.push(`/admin/showcase/${createdItem._id}/edit`);
     } else {
       dispatch(listShowcaseItems());
     }
-  }, [
-    dispatch,
-    history,
-    userInfo,
-    successDelete,
-    successCreate,
-    createdProduct,
-  ]);
+  }, [dispatch, history, userInfo, successDelete, successCreate, createdItem]);
 
   const createProductHandler = () => {
     dispatch(createShowcaseItems());
@@ -61,7 +54,7 @@ const ShowcaseListScreen = ({ history, match }) => {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteProduct(id));
+      dispatch(deleteShowcaseItem(id));
     }
   };
 
@@ -105,12 +98,9 @@ const ShowcaseListScreen = ({ history, match }) => {
                 <td>{item._id}</td>
                 <td>{item.name}</td>
                 <td>${item.price}</td>
-                <td>
-                  <img src={item.image} />
-                </td>
                 <td>{item.description}</td>
                 <td>
-                  <LinkContainer to={`/admin/product/${item._id}/edit`}>
+                  <LinkContainer to={`/admin/showcase/${item._id}/edit`}>
                     <Button variant="dark" className="btn-sm">
                       <i className="fas fa-edit" />
                     </Button>

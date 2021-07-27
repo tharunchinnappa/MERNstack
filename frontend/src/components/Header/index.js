@@ -92,6 +92,9 @@ const Header = () => {
                 <LinkContainer to="/admin/orderlist">
                   <NavDropdown.Item>Orders</NavDropdown.Item>
                 </LinkContainer>
+                <LinkContainer to="/admin/showcaselist">
+                  <NavDropdown.Item>Showcase</NavDropdown.Item>
+                </LinkContainer>
               </NavDropdown>
             ) : null}
           </Nav>

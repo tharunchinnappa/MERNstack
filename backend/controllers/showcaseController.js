@@ -17,6 +17,20 @@ const createShowcaseItem = asyncHandler(async (req, res) => {
   res.status(201).json(createdShowcaseItem);
 });
 
+//@desc Delete item
+//@route DELETE /api/showcase/:id
+//@access private/Admin
+const deleteShowcaseItem = asyncHandler(async (req, res) => {
+  const item = await Showcase.findById(req.params.id);
+  if (item) {
+    await item.remove();
+    res.json({ message: "Item removed" });
+  } else {
+    res.send(404);
+    throw new Error("Item not found");
+  }
+});
+
 //@desc Update a ShowcaseItem
 //@route PUT /api/showcase/:id
 //@access private/Admin
@@ -46,4 +60,23 @@ const getShowcaseItems = asyncHandler(async (req, res) => {
   res.json(showcaseItems);
 });
 
-export { getShowcaseItems, updateShowcaseItem, createShowcaseItem };
+//@desc Fetch single item
+//@route GET /api/showcase/:id
+//@access public
+const getShowcaseItem = asyncHandler(async (req, res) => {
+  const item = await Showcase.findById(req.params.id);
+  if (item) {
+    res.json(item);
+  } else {
+    res.status(404);
+    throw new Error("Item not found");
+  }
+});
+
+export {
+  getShowcaseItems,
+  updateShowcaseItem,
+  createShowcaseItem,
+  getShowcaseItem,
+  deleteShowcaseItem,
+};

@@ -48,12 +48,12 @@ const App = ({ history }) => {
           <Route path="/admin/userlist" component={UserListScreen} />
           <Route path="/admin/user/:id/edit" component={UserEditScreen} />
           <Route path="/admin/productlist" component={ProductListScreen} />
-          <Route path="/admin/showcaseitem" component={ShowcaseListScreen} />
+          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+          <Route path="/admin/showcaselist" component={ShowcaseListScreen} />
           <Route
             path="/admin/showcase/:id/edit"
             component={ShowcaseEditScreen}
           />
-          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
           <Route path="/admin/orderlist" component={OrderListScreen} />
           <Route path="/search/:keyword" component={HomeScreen} />
           <Route exact path="/showcase" component={Showcase} />
