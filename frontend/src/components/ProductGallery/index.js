@@ -3,16 +3,21 @@ import "./style.scss";
 
 const ProductGallery = ({ images }) => {
   const [selectedImg, setSelectedImg] = useState(images[0].path);
+
   return (
-    <div className="App">
-      <div className="container">
-        <img src={selectedImg} alt="Selected" className="selected" />
+    <div className="productGallery">
+      <div className="container-gallery">
+        <img
+          src={`http://${window.location.host}/${selectedImg}`}
+          alt="Selected"
+          className="selected"
+        />
         <div className="imgContainer">
           {images.map((img, index) => (
             <img
               style={{ border: selectedImg === img ? "4px solid purple" : "" }}
               key={index}
-              src={img.path}
+              src={`http://${window.location.host}/${img.path}`}
               alt={img.originalname}
               onClick={() => setSelectedImg(img.path)}
             />

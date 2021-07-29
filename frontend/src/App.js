@@ -28,6 +28,7 @@ import OrderListScreen from "./screens/OrderListScreen";
 import Shop from "./screens/Shop";
 import ShowcaseListScreen from "./screens/ShowcaseListScreen";
 import ShowcaseEditScreen from "./screens/ShowcaseEditScreen";
+import showcaseDetails from "./screens/showcaseDetails";
 import Contact from "./screens/Contact";
 
 const App = ({ history }) => {
@@ -45,6 +46,7 @@ const App = ({ history }) => {
           <Route path="/register" component={RegisterScreen} />
           <Route path="/profile" component={ProfileScreen} />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/showcase/:id" component={showcaseDetails} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/admin/userlist" component={UserListScreen} />
           <Route path="/admin/user/:id/edit" component={UserEditScreen} />

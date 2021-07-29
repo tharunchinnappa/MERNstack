@@ -5,7 +5,6 @@ import {
   Container,
   Row,
   Col,
-  Image,
   ListGroup,
   Card,
   Button,
@@ -20,10 +19,35 @@ import {
 import Loader from "./../../components/Loader";
 import Toast from "./../../components/Toast";
 import Message from "./../../components/Message";
+import ProductGallery from "../../components/ProductGallery";
 import {
   PRODUCT_DETAILS_RESET,
   PRODUCT_CREATE_REVIEW_RESET,
 } from "../../redux/constants/productConstants";
+
+const SmartText = ({ text, length = 200 }) => {
+  const [showLess, setShowLess] = useState(true);
+
+  if (text.length < length) {
+    return <p>{text}</p>;
+  }
+
+  return (
+    <div>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: showLess ? `${text.slice(0, length)}...` : text,
+        }}
+      ></p>
+      <a
+        style={{ color: "black", cursor: "pointer" }}
+        onClick={() => setShowLess(!showLess)}
+      >
+        &nbsp;View {showLess ? "More..." : "Less"}
+      </a>
+    </div>
+  );
+};
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -64,6 +88,9 @@ const ProductScreen = ({ history, match }) => {
     e.preventDefault();
     dispatch(createProductReview(match.params.id, { rating, comment }));
   };
+
+  console.log(product);
+
   return (
     <Container>
       <Link className="btn btn-light my-3" to="/">
@@ -77,7 +104,7 @@ const ProductScreen = ({ history, match }) => {
         <>
           <Row>
             <Col md={4} lg={6}>
-              <Image src={product.image} alt={product.name} fluid />
+              {product.image && <ProductGallery images={product.image} />}
             </Col>
             <Col md={4} lg={3}>
               <ListGroup variant="flush">
@@ -92,7 +119,10 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroupItem>
                 <ListGroupItem>Price: ${product.price}</ListGroupItem>
                 <ListGroupItem>
-                  Description: {product.description}
+                  Description:
+                  <SmartText
+                    text={`${product.description && product.description}`}
+                  />
                 </ListGroupItem>
               </ListGroup>
             </Col>
