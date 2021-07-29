@@ -11,6 +11,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
+
   window.onscroll = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
@@ -49,7 +54,16 @@ const Header = () => {
               <Nav.Link>Contacts</Nav.Link>
             </LinkContainer>
           </Nav>
-          <Nav className="ml-auto">
+          <Nav className="ml-auto align-items-center">
+            <LinkContainer to="/cart">
+              <Nav.Link>
+                {/* <i className="fas fa-shopping-cart px-1" />
+                Cart */}
+                <span class="fa-stack fa-1x has-badge" data-count={totalItems}>
+                  <i class="fas fa-shopping-basket fa-2x"></i>
+                </span>
+              </Nav.Link>
+            </LinkContainer>
             {!userInfo && (
               <div className="d-flex align-items-lg-center mt-3 mt-lg-0">
                 <Link
@@ -80,7 +94,7 @@ const Header = () => {
                   Sign in
                 </Nav.Link>
               </LinkContainer>
-            )}{" "}
+            )}
             {userInfo && userInfo.isAdmin ? (
               <NavDropdown title="Admin links" id="adminmenu">
                 <LinkContainer to="/admin/userlist">

@@ -7,7 +7,7 @@ import Toast from "./../../components/Toast";
 import Product from "./../../components/Product";
 import "./style.scss";
 
-const Shop = ({ match }) => {
+const Shop = ({ history, match }) => {
   const keyword = match.params.keyword;
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -27,7 +27,7 @@ const Shop = ({ match }) => {
         <Row>
           {products.map((product) => (
             <Col key={product._id}>
-              <Product product={product} />
+              <Product product={product} history={history} />
             </Col>
           ))}
         </Row>

@@ -11,7 +11,6 @@ const Background = () => {
     let context = canvas.getContext("2d");
     let width = document.body.offsetWidth;
     let height = document.body.offsetHeight;
-    console.log(width, height);
     canvas.width = width;
     canvas.height = height;
     canvas.style.width = `${width}px`;

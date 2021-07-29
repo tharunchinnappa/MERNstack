@@ -63,7 +63,7 @@ const ProductScreen = ({ history, match }) => {
 
   return (
     <Container>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-light my-3" to="/showcase">
         Go back
       </Link>
       {loading ? (
@@ -73,13 +73,16 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <>
           <Row>
-            <Col md={12} lg={12}>
-              {showcaseItem.image && (
-                <Image
-                  src={`http://${window.location.host}/${showcaseItem.image.path}`}
-                  fluid
-                />
-              )}
+            <Col md={12}>
+              <div className="d-flex justify-content-center">
+                {showcaseItem.image && (
+                  <Image
+                    className="border border-white"
+                    src={`http://${window.location.host}/${showcaseItem.image.path}`}
+                    fluid
+                  />
+                )}
+              </div>
             </Col>
             <Col md={4} lg={3}>
               <ListGroup variant="flush">

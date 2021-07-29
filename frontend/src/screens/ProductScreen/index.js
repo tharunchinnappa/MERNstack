@@ -89,11 +89,11 @@ const ProductScreen = ({ history, match }) => {
     dispatch(createProductReview(match.params.id, { rating, comment }));
   };
 
-  console.log(product);
+  console.log(history);
 
   return (
     <Container>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-light my-3" to="/books">
         Go back
       </Link>
       {loading ? (
@@ -103,10 +103,10 @@ const ProductScreen = ({ history, match }) => {
       ) : (
         <>
           <Row>
-            <Col md={4} lg={6}>
+            <Col md={4} lg={4}>
               {product.image && <ProductGallery images={product.image} />}
             </Col>
-            <Col md={4} lg={3}>
+            <Col md={4} lg={5}>
               <ListGroup variant="flush">
                 <ListGroupItem>
                   <h2>{product.name}</h2>

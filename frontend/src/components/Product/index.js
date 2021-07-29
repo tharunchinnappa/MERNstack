@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "./../Rating";
 import ProductGallery from "../../components/ProductGallery";
-import { Card } from "react-bootstrap";
+import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import "./style.scss";
 
 const SmartText = ({ text, length = 200 }) => {
@@ -29,8 +29,13 @@ const SmartText = ({ text, length = 200 }) => {
   );
 };
 
+const Product = ({ product, history }) => {
+  const [qty, setQty] = useState(1);
 
-const Product = ({ product }) => {
+  const addToCartHandler = (id) => {
+    history.push(`/cart/${id}?qty=${qty}`);
+  };
+
   return (
     <div className="wrapper">
       <div className="card-container">
@@ -50,6 +55,22 @@ const Product = ({ product }) => {
                   <h3>Price:</h3>
                   <p>${product.price}</p>
                 </div>
+                <Row>
+                  <h3>Qty:</h3>
+                  <Col>
+                    <Form.Control
+                      as="select"
+                      value={qty}
+                      onChange={(e) => setQty(e.target.value)}
+                    >
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Col>
+                </Row>
                 <div className="rating">
                   <h3>
                     Rating:
@@ -65,7 +86,15 @@ const Product = ({ product }) => {
               <div className="details">
                 <SmartText text={product.description} />
               </div>
-              <div className="button">Add to Cart</div>
+
+              <Button
+                className="btn-block"
+                type="button"
+                disabled={product.countInStock === 0}
+                onClick={() => addToCartHandler(product._id)}
+              >
+                Add to Cart
+              </Button>
             </div>
           </div>
         </div>

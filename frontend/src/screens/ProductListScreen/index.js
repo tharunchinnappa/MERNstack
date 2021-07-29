@@ -38,13 +38,12 @@ const ProductListScreen = ({ history, match }) => {
   useEffect(() => {
     dispatch({ type: PRODUCT_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
-      history.push("/login");
-    }
-    if (successCreate) {
+    if (successCreate && userInfo.isAdmin) {
       history.push(`/admin/product/${createdProduct._id}/edit`);
-    } else {
+    } else if (userInfo && userInfo.isAdmin) {
       dispatch(listProducts());
+    } else {
+      history.push("/login");
     }
   }, [
     dispatch,

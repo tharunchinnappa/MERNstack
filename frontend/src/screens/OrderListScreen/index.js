@@ -6,7 +6,6 @@ import Message from "./../../components/Message";
 import Loader from "./../../components/Loader";
 import { listOrders } from "./../../redux/actions/orderActions";
 
-
 const OrderListScreen = ({ history }) => {
   const dispatch = useDispatch();
 
@@ -23,7 +22,6 @@ const OrderListScreen = ({ history }) => {
       history.push("/login");
     }
   }, [dispatch, history, userInfo]);
-
   return (
     <>
       <h1>Orders</h1>

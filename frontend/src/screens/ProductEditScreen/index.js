@@ -35,7 +35,14 @@ const ProductEditScreen = ({ match, history }) => {
     success: successUpdate,
   } = productUpdate;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  console.log(userInfo.isAdmin);
   useEffect(() => {
+    if (!userInfo && !userInfo.isAdmin) {
+      history.push("/login");
+    }
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
       history.push("/admin/productlist");
@@ -52,7 +59,7 @@ const ProductEditScreen = ({ match, history }) => {
         setCountInStock(product.countInStock);
       }
     }
-  }, [dispatch, history, product, productId, successUpdate]);
+  }, [dispatch, history, product, productId, successUpdate, userInfo]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files;

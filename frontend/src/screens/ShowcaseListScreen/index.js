@@ -17,6 +17,9 @@ const ShowcaseListScreen = ({ history, match }) => {
   const showcaseItemsList = useSelector((state) => state.showcaseItemsList);
   const { loading, error, showcase } = showcaseItemsList;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const showcaseItemDelete = useSelector((state) => state.showcaseItemDelete);
   const {
     loading: loadingDelete,
@@ -32,19 +35,15 @@ const ShowcaseListScreen = ({ history, match }) => {
     showcase: createdItem,
   } = showcaseItemCreate;
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-
   useEffect(() => {
     dispatch({ type: SHOWCASE_CREATE_RESET });
 
-    if (!userInfo.isAdmin) {
-      history.push("/login");
-    }
-    if (successCreate) {
+    if (successCreate && userInfo.isAdmin) {
       history.push(`/admin/showcase/${createdItem._id}/edit`);
-    } else {
+    } else if (userInfo && userInfo.isAdmin) {
       dispatch(listShowcaseItems());
+    } else {
+      history.push("/login");
     }
   }, [dispatch, history, userInfo, successDelete, successCreate, createdItem]);
 

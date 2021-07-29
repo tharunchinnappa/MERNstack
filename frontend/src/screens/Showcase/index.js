@@ -36,7 +36,8 @@ const Showcase = () => {
                       className="gallery__image"
                     />
                     <figcaption className="gallery__caption">
-                      Portrait by Jessica Felicio
+                      <h5>{item.name}</h5>
+                      Portrait by Poovaiah
                     </figcaption>
                   </figure>
                 </Link>
