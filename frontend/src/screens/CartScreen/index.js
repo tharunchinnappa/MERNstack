@@ -11,7 +11,11 @@ import {
   Card,
   ListGroupItem,
 } from "react-bootstrap";
-import { addToCart, removeFromCart } from "./../../redux/actions/cartActions";
+import {
+  addToCart,
+  removeFromCart,
+  ShowcaseItemAddToCart,
+} from "./../../redux/actions/cartActions";
 import Message from "./../../components/Message";
 
 const CartScreen = ({ match, location, history }) => {
@@ -20,8 +24,14 @@ const CartScreen = ({ match, location, history }) => {
   const { cartItems } = cart;
   const productId = match.params.id;
   const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+  const showcaseItem = location.search
+    ? location.search.split("=")[1]
+    : "product";
 
   useEffect(() => {
+    if (productId && showcaseItem) {
+      dispatch(ShowcaseItemAddToCart(productId));
+    }
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
@@ -49,10 +59,23 @@ const CartScreen = ({ match, location, history }) => {
               <ListGroupItem key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image src={item.image} alt={item.name} fluid rounded />
+                    <Image
+                      src={`http://${window.location.host}/${
+                        item.image.path || item.image[2].path
+                      }`}
+                      alt={item.name}
+                      fluid
+                      rounded
+                    />
                   </Col>
                   <Col md={3}>
-                    <Link to={`/product/${item.product}`}>{item.name}</Link>
+                    <Link
+                      to={`/${
+                        item.category === "books" ? "product" : "showcase"
+                      }/${item.product}`}
+                    >
+                      {item.name}
+                    </Link>
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>

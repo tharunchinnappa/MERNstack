@@ -18,7 +18,6 @@ const ProductEditScreen = ({ match, history }) => {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState("");
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -55,7 +54,6 @@ const ProductEditScreen = ({ match, history }) => {
         setImage(product.image);
         setBrand(product.brand);
         setDescription(product.description);
-        setCategory(product.category);
         setCountInStock(product.countInStock);
       }
     }
@@ -100,7 +98,6 @@ const ProductEditScreen = ({ match, history }) => {
         description,
         brand,
         image,
-        category,
         countInStock,
       }),
     );
@@ -191,16 +188,6 @@ const ProductEditScreen = ({ match, history }) => {
                 placeholder="Enter countInStock"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="category">
-              <Form.Label>Category</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

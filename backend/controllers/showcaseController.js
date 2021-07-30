@@ -10,6 +10,7 @@ const createShowcaseItem = asyncHandler(async (req, res) => {
     name: "sample name",
     image: "",
     description: "sample description",
+    category: "showcase",
     price: 0,
   });
 
