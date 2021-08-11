@@ -117,7 +117,7 @@ const ProductScreen = ({ history, match }) => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroupItem>
-                <ListGroupItem>Price: ${product.price}</ListGroupItem>
+                <ListGroupItem>Price: ₹{product.price}</ListGroupItem>
                 <ListGroupItem>
                   Description:
                   <SmartText
@@ -133,7 +133,7 @@ const ProductScreen = ({ history, match }) => {
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>₹{product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroupItem>
@@ -188,7 +188,7 @@ const ProductScreen = ({ history, match }) => {
               {product.reviews.length === 0 && <Message>No reviews</Message>}
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
+                  <ListGroup.Item key={review._id} className="bg-secondary">
                     <strong>{review.name}</strong>
                     <Rating val={review.rating}></Rating>
                     <p>{review.createdAt.substring(0, 10)}</p>

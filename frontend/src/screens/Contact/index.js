@@ -29,13 +29,32 @@ const Contact = () => {
   return (
     <main className="flexbox-col">
       <h1 className=" display-1 text-center text-white " id="heading-about">
-        Contacts <hr className="hr" />
+        Contacts
       </h1>
 
       <div className="contacts">
-        <p>Phone:48357349857498</p>
-        <br></br>
-        <p>Email: abc@abc.com</p>
+        <section>
+          <div className="wrapper">
+            <div className="contact-button">
+              <a href="http://linkedin.com/in/poovaiahmalavanda">
+                <div className="icon">
+                  <i className="fab fa-linkedin" />
+                </div>
+
+                <span>LinkedIn</span>
+              </a>
+            </div>
+
+            <div className="contact-button">
+              <a href="https://www.instagram.com/poovaiah_malavanda/">
+                <div className="icon">
+                  <i className="fab fa-instagram" />
+                </div>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div className="form-wrapper">
@@ -77,7 +96,7 @@ const Contact = () => {
           </div>
 
           <div className="form-input-max">
-            <p className="form-text">Message* (Max 500)</p>
+            <p className="form-text">Message* (Max 300)</p>
             <div
               id="textarea"
               className="form-input-wrapper flexbox-left-start"
@@ -88,7 +107,7 @@ const Contact = () => {
                 id="message"
                 name="message"
                 placeholder="Your message"
-                maxLength={500}
+                maxLength={300}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
@@ -97,8 +116,8 @@ const Contact = () => {
           </div>
           <div className="form-input-max flexbox-left">
             <div className="my-5 w-25">
-              <button className="button" type="submit">
-                Send your message
+              <button className="contact-button" type="submit">
+                Send
               </button>
             </div>
           </div>

@@ -154,7 +154,9 @@ const OrderScreen = ({ match, history }) => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`http://${window.location.host}/${
+                              item.image.path || item.image[2].path
+                            }`}
                             alt={item.name}
                             fluid
                             rounded
@@ -166,7 +168,7 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -185,25 +187,25 @@ const OrderScreen = ({ match, history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>₹{order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>₹{order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>₹{order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>₹{order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
 
@@ -249,17 +251,6 @@ const OrderScreen = ({ match, history }) => {
                   <span className="change-color">{order.user.name}</span> !
                 </h4>
               </div>
-              <div className="col-auto text-center my-auto pl-0 pt-sm-4">
-                <img
-                  className="img-fluid my-auto align-items-center mb-0 pt-3"
-                  src="/images/logo.png"
-                  width={115}
-                  height={115}
-                />
-                <p className="mt-2 mb-4 pt-0 Glasses">
-                  Cup Of Coffee For Everyone
-                </p>
-              </div>
             </div>
           </div>
           <div className="card-body">
@@ -281,7 +272,9 @@ const OrderScreen = ({ match, history }) => {
                         <div className="sq align-self-center ">
                           <img
                             className="img-fluid my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0"
-                            src={item.image}
+                            src={`http://${window.location.host}/${
+                              item.image.path || item.image[2].path
+                            }`}
                             alt={item.name}
                             width={135}
                             height={135}
@@ -330,7 +323,7 @@ const OrderScreen = ({ match, history }) => {
                                   ? { width: "100%" }
                                   : order.isPaid
                                   ? { width: "38%" }
-                                  : { width: "0%" }
+                                  : { width: "30%" }
                               }
                               role="progressbar"
                               aria-valuenow={25}
@@ -338,7 +331,7 @@ const OrderScreen = ({ match, history }) => {
                               aria-valuemax={100}
                             />
                           </div>
-                          <div className="media row justify-content-between ">
+                          <div className="d-flex justify-content-between ">
                             <div className="col-auto text-right">
                               <span>
                                 <small className="text-right mr-sm-2">
@@ -381,14 +374,14 @@ const OrderScreen = ({ match, history }) => {
             ))}
 
             <div className="row mt-4">
-              <div className="col">
-                <div className="row justify-content-between">
-                  <div className="col-auto">
-                    <p className="mb-1 text-dark">
-                      <b>Order Details</b>
-                    </p>
-                  </div>
+              <div className="row justify-content-between">
+                <div className="col-auto">
+                  <p className="mb-1 text-dark">
+                    <b>Order Details :</b>
+                  </p>
                 </div>
+              </div>
+              <div className="col">
                 <div className="row justify-content-between">
                   <div className="flex-sm-col text-right col">
                     <p className="mb-1">
@@ -431,8 +424,6 @@ const OrderScreen = ({ match, history }) => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="row invoice ">
               <div className="col">
                 <p className="mb-1"> Invoice Number : 788152</p>
                 <p className="mb-1">Invoice Date : 22 Dec,2019</p>
@@ -446,7 +437,7 @@ const OrderScreen = ({ match, history }) => {
                 <div className="col-sm-auto col-auto my-auto">
                   <img
                     className="img-fluid my-auto align-self-center "
-                    src="/images/logo.png"
+                    src="/Product.png"
                     width={115}
                     height={115}
                   />
@@ -455,18 +446,18 @@ const OrderScreen = ({ match, history }) => {
                   <h2 className="mb-0 font-weight-bold">TOTAL PAID</h2>
                 </div>
                 <div className="col-auto my-auto ml-auto">
-                  <h1 className="display-3 ">₹ {order.totalPrice}</h1>
+                  <h1 className="display-3">₹ {order.totalPrice}</h1>
                 </div>
               </div>
               <div className="row mb-3 mt-3 mt-md-0">
                 <div className="col-auto border-line">
-                  <small className="text-white">PAN:AA02hDW7E</small>
+                  <small className="text-black">PAN:AA02hDW7E</small>
                 </div>
                 <div className="col-auto border-line">
-                  <small className="text-white">CIN:UMMC20PTC </small>
+                  <small className="text-black">CIN:UMMC20PTC </small>
                 </div>
                 <div className="col-auto ">
-                  <small className="text-white">GSTN:268FD07EXX </small>
+                  <small className="text-black">GSTN:268FD07EXX </small>
                 </div>
               </div>
             </div>

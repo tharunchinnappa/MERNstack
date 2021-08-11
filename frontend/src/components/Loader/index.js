@@ -14,6 +14,7 @@ const Loader = () => {
         display: "block",
         top: "50%",
         left: "50%",
+        transform: "translateX(-50%,-50%)",
       }}
     >
       <span className="sr-only">Loading...</span>

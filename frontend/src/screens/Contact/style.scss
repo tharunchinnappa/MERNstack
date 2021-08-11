@@ -10,13 +10,7 @@
   --bc-gray: #ede8e4;
   --gray: #9e9d9b;
   --gray-dark: #1c1a19;
-  /* Gradients */
-  --pace: linear-gradient(
-    90deg,
-    rgba(161, 166, 252, 1) 0%,
-    rgba(251, 161, 229, 1) 50%,
-    rgba(241, 196, 161, 1) 100%
-  );
+
   /* Sizes */
   --heading: 3.4rem;
   --paragraph: 1.1rem;
@@ -27,7 +21,7 @@
 
 main {
   .contacts {
-    color: white;
+    margin: 1.5rem 0;
   }
 }
 
@@ -111,8 +105,8 @@ textarea::-webkit-scrollbar-thumb {
 
 .form-undertitle {
   margin: 0 0 1em 0;
-  color: var(--gray);
-  font-weight: 300;
+  color: white;
+  font-weight: 600;
 }
 .send-success {
   width: 100%;
@@ -130,7 +124,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 .form-text {
   margin: 1em 0 0.75em 2.2em;
-  color: var(--gray-dark);
+  color: white !important;
   font-weight: 300;
 }
 .form-input-grid {
@@ -172,6 +166,65 @@ textarea::-webkit-scrollbar-thumb {
 .form-input:focus {
   outline: none;
   border: 2px solid var(--primary);
+}
+
+//
+.contact-button {
+  float: left;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 20px 0 rgba(237, 232, 228, 0.8);
+  margin-right: 1rem;
+
+  a {
+    text-decoration: none;
+  }
+  span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin-left: 10px;
+  }
+  &:hover {
+    width: 200px;
+  }
+
+  &:nth-child(1):hover .icon {
+    background: #4267b2;
+  }
+
+  &:nth-child(2):hover .icon {
+    background: #e1306c;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 50px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+  }
+  i {
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-in-out;
+    color: #000;
+  }
+  &:hover i {
+    color: #fff;
+  }
+  &:nth-child(2) span {
+    color: #e1306c;
+  }
+  &:nth-child(1) span {
+    color: #4267b2;
+  }
 }
 
 /* Media Rules */

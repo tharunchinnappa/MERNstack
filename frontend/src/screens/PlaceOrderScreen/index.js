@@ -86,7 +86,9 @@ const PlaceOrderScreen = ({ history }) => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={`http://${window.location.host}/${
+                              item.image.path || item.image[2].path
+                            }`}
                             alt={item.name}
                             fluid
                             rounded
@@ -101,7 +103,7 @@ const PlaceOrderScreen = ({ history }) => {
                           </Link>
                         </Col>
                         <Col md={5}>
-                          {item.qty} x ${item.price} = $
+                          {item.qty} x ₹{item.price} = ₹
                           {(item.qty * item.price).toFixed(2)}
                         </Col>
                       </Row>
@@ -109,16 +111,6 @@ const PlaceOrderScreen = ({ history }) => {
                   ))}
                 </ListGroup>
               )}
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Button
-                type="button"
-                className="btn-block"
-                disabled={cart.cartItems === 0}
-                onClick={placeOrderHandler}
-              >
-                Place Order
-              </Button>
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -131,25 +123,25 @@ const PlaceOrderScreen = ({ history }) => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items:</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>₹{cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping:</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>₹{cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax:</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>₹{cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total:</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>₹{cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

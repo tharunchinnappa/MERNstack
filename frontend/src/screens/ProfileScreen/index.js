@@ -59,8 +59,10 @@ const ProfileScreen = ({ history }) => {
 
   return (
     <Row>
+      <h1 className=" display-1 text-center text-white " id="heading-about">
+        User profile
+      </h1>
       <Col md={2}>
-        <h2>User profile</h2>
         {message && <Message variant="danger">{message}</Message>}
         {success && <Toast text="Successfully updated" type="info" />}
         {loading ? (
@@ -109,14 +111,14 @@ const ProfileScreen = ({ history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary">
+            <Button type="submit" variant="primary" className="mt-3">
               Update
             </Button>
           </Form>
         )}
       </Col>
       <Col md={10}>
-        <h2>My order</h2>
+        <h2 className="text-white">My order</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (

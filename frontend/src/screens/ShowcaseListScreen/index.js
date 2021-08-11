@@ -60,13 +60,13 @@ const ShowcaseListScreen = ({ history, match }) => {
   return (
     <>
       <Row className="align-items-center">
-        <Col>
-          <h1>Showcase Items</h1>
-        </Col>
+        <h1 className=" display-1 text-center text-white " id="heading-about">
+          Showcase
+        </h1>
         <Col className="text-right ml-auto">
           <Button className="my-3" onClick={createProductHandler}>
             <i className="fas fa-plus" />
-            Create Product
+            Create showcase item
           </Button>
         </Col>
       </Row>

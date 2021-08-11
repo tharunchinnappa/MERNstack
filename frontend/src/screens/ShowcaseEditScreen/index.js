@@ -145,7 +145,7 @@ const ShowcaseEditScreen = ({ match, history }) => {
                 value={image.path || ""}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
-              <img src={`http://${window.location.host}/${image.path}`} />
+              <img src={`http://${window.location.host}/${image.path}`} fluid />
               <Form.File
                 id="image-file"
                 label="Choose file"

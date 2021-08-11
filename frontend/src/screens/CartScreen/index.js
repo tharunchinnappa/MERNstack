@@ -47,8 +47,10 @@ const CartScreen = ({ match, location, history }) => {
 
   return (
     <Row>
-      <Col md={8}>
-        <h1>Shopping Cart</h1>
+      <h1 className=" display-1 text-center text-white " id="heading-about">
+        Shopping Cart
+      </h1>
+      <Col md={8} className="mt-4">
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">Go back</Link>
@@ -57,7 +59,7 @@ const CartScreen = ({ match, location, history }) => {
           <ListGroup variant="flush">
             {cartItems.map((item) => (
               <ListGroupItem key={item.product}>
-                <Row>
+                <Row className="align-items-center">
                   <Col md={2}>
                     <Image
                       src={`http://${window.location.host}/${
@@ -77,7 +79,7 @@ const CartScreen = ({ match, location, history }) => {
                       {item.name}
                     </Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>₹{item.price}</Col>
                   <Col md={2}>
                     <Form.Control
                       as="select"
@@ -110,7 +112,7 @@ const CartScreen = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
-      <Col md={4}>
+      <Col md={4} className="mt-4">
         <Card>
           <ListGroup variant="flush">
             <ListGroupItem>
@@ -118,7 +120,7 @@ const CartScreen = ({ match, location, history }) => {
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              $
+              ₹
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
                 .toFixed(2)}

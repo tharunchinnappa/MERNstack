@@ -52,7 +52,10 @@ const UserEditScreen = ({ match, history }) => {
         Go back
       </Link>
       <FormContainer>
-        <h1>Update user: {name}</h1>
+        <h1 className=" display-1 text-center text-white " id="heading-about">
+          Update user
+        </h1>
+        <h1>{name}</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (

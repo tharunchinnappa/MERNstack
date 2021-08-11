@@ -53,7 +53,7 @@ const Product = ({ product, history }) => {
               <div className="price-rating">
                 <div className="price">
                   <h3>Price:</h3>
-                  <p>${product.price}</p>
+                  <p>₹{product.price}</p>
                 </div>
                 <Row>
                   <h3>Qty:</h3>
@@ -67,7 +67,7 @@ const Product = ({ product, history }) => {
                         <option key={x + 1} value={x + 1}>
                           {x + 1}
                         </option>
-                      ))}
+                      ))}{" "}
                     </Form.Control>
                   </Col>
                 </Row>
@@ -88,7 +88,7 @@ const Product = ({ product, history }) => {
               </div>
 
               <Button
-                className="btn-block"
+                className="button"
                 type="button"
                 disabled={product.countInStock === 0}
                 onClick={() => addToCartHandler(product._id)}

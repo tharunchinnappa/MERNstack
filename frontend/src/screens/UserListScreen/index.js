@@ -34,13 +34,15 @@ const UserListScreen = ({ history }) => {
 
   return (
     <>
-      <h1>Users</h1>
+      <h1 className=" display-1 text-center text-white " id="heading-about">
+        Users
+      </h1>
       {loading ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Table stripped bordered hover responsive className="table-sm">
+        <Table stripped bordered hover responsive className="table-sm mt-4">
           <thead className="bg-dark text-light">
             <tr>
               <th>No.</th>

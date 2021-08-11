@@ -21,7 +21,7 @@ $gray: #8d8d8d;
 
 /*- Card sides -*/
 .card-show {
-  background: #fffee1;
+  background: #ede8e4;
   border-radius: 10px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
   padding: 25px;
@@ -83,13 +83,13 @@ $gray: #8d8d8d;
   }
   .button {
     margin-top: auto;
-    border: 1px solid black;
     border-radius: 40px;
+    border: none;
     color: black;
+    background-color: $orange;
     cursor: pointer;
     display: block;
     padding: 10px;
-    font-family: "Roboto", sans-serif;
     text-align: center;
     text-transform: uppercase;
     position: relative;

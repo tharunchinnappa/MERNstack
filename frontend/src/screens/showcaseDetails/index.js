@@ -84,7 +84,7 @@ const ProductScreen = ({ history, match }) => {
                 )}
               </div>
             </Col>
-            <Col md={4} lg={3}>
+            <Col md={4} className="mt-5">
               <ListGroup variant="flush">
                 <ListGroupItem>
                   <h2>{showcaseItem.name}</h2>
@@ -101,7 +101,7 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroupItem>
               </ListGroup>
             </Col>
-            <Col md={3}>
+            <Col md={3} className="mt-5">
               <Card>
                 <ListGroup variant="flush">
                   <ListGroupItem>

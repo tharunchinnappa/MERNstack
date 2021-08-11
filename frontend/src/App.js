@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import "./app.scss";
 
 // import component
 import Header from "./components/Header";
@@ -36,7 +37,7 @@ const App = ({ history }) => {
     <Router>
       <Header />
 
-      <main className="py-3">
+      <main className="my-3 mainApp">
         <Container>
           <Route path="/login" component={LoginScreen} />
           <Route path="/order/:id" component={OrderScreen} />

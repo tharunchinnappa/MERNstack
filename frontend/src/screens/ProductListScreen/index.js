@@ -67,9 +67,10 @@ const ProductListScreen = ({ history, match }) => {
   return (
     <>
       <Row className="align-items-center">
-        <Col>
-          <h1>Products</h1>
-        </Col>
+        <h1 className=" display-1 text-center text-white " id="heading-about">
+          Products
+        </h1>
+
         <Col className="text-right ml-auto">
           <Button className="my-3" onClick={createProductHandler}>
             <i className="fas fa-plus" />
